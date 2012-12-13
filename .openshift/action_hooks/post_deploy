@@ -2,3 +2,13 @@
 # This is a simple post deploy hook executed after your application 
 # is deployed and started.  This script gets executed directly, so 
 # it could be python, php, ruby, etc.
+
+ ln -s $OPENSHIFT_DATA_DIR"tmp/"  $OPENSHIFT_REPO_DIR"php/app/"
+
+ ln -s $OPENSHIFT_DATA_DIR"server_setup/core.php"  $OPENSHIFT_REPO_DIR"php/app/Config/core.php"
+      
+ ln -s $OPENSHIFT_DATA_DIR"server_setup/database.php"  $OPENSHIFT_REPO_DIR"php/app/Config/database.php"
+
+ cd $OPENSHIFT_REPO_DIR"php/app/"
+
+ Console/cake Migrations.migration run all
