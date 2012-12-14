@@ -1,4 +1,4 @@
 .project
-/php/app/Config/core.php
-/php/app/Config/database.php
+./php/app/Config/core.php
+./php/app/Config/database.php
 .idea
