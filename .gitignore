@@ -1,5 +1,5 @@
 .project
-./php/app/Config/core.php
-./php/app/Config/database.php
-./php/app/tmp
+/php/app/Config/core.php
+/php/app/Config/database.php
+/php/app/tmp
 .idea
