@@ -99,15 +99,22 @@ class CompaniesController extends AppController {
 	}
 
     public function get_from_crunchbase(){
-
+        $this->autoRender = false;
+        $this->load_crunchbaseCompanies();
+        $esponse_array = $this->Curl->curl_get();
 
 
     }
 
+    public function load_crunchbase_companies(){
+        $json_response = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies');
+        pr($json_response);
+    }
+
     public function get_form_angelist(){
         $this->autoRender = false;
-        $json_response = $this->Curl->curl_get("https://api.angel.co/1/startups/batch?ids=6702,171");
-        return $json_response;
-        pr($json_response);
+        $esponse_array = $this->Curl->curl_get("https://api.angel.co/1/startups/batch?ids=6702,171");
+        return $esponse_array;
+        pr($esponse_array);
     }
 }

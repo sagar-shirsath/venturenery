@@ -32,6 +32,11 @@ class GeneratingAllTables extends CakeMigration
                         'null' => false,
                         'default' => NULL
                     ),
+                    'slug' => array(
+                        'type' => 'string',
+                        'null' => false,
+                        'default' => NULL
+                    ),
                     'description' => array(
                         'type' => 'string',
                         'null' => false,
