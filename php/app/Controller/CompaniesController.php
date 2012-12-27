@@ -100,15 +100,15 @@ class CompaniesController extends AppController {
 
     public function get_from_crunchbase(){
         $this->autoRender = false;
-        $this->load_crunchbaseCompanies();
-        $esponse_array = $this->Curl->curl_get();
+        $this->loadCrunchbaseCompanies();
+//        $esponse_array = $this->Curl->curl_get();
 
 
     }
 
-    public function load_crunchbase_companies(){
-        $json_response = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies');
-        pr($json_response);
+    public function loadCrunchbaseCompanies(){
+        $json_response = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies.js?api_key=ftxykm4s2w3gym4nm8y2pfyg');
+        pr($json_response[0]);die;
     }
 
     public function get_form_angelist(){

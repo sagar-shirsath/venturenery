@@ -6,7 +6,7 @@
     <fieldset>
         <legend><?php echo __('User Login'); ?></legend>
         <?php
-        echo $this->Form->input('username', array('id' => 'username'));
+        echo $this->Form->input('email', array('id' => 'email'));
         echo $this->Form->input('password', array('id' => 'password'));
         ?>
     </fieldset>

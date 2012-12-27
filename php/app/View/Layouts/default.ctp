@@ -55,7 +55,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <?php echo $this->Html->link('Vebturenary',array('controller'=>'users','action'=>'dashboard'),array('class'=>"brand"));?>
+            <?php echo $this->Html->link('Venturenary',array('controller'=>'users','action'=>'dashboard'),array('class'=>"brand"));?>
             <!--            <a class="brand" href="/">Feedback</a/>-->
             <div class="nav-collapse" id="main-menu">
                 <ul class="nav" id="main-menu-left">

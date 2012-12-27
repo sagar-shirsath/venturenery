@@ -25,7 +25,8 @@ class UsersController extends AppController
         if (($this->request->is('post') && !empty($this->request->data))) {
 
             if ($this->Auth->login()) {
-                $user_data = $this->User->find('first', array('conditions' => array('User.username' => $this->request->data['User']['username']), 'recursive' => -1));
+                $user_data = $this->User->find('first', array('conditions' => array('User.email' => $this->request->data['User']['email']), 'recursive' => -1));
+
                 if (!empty($user_data['User']['is_active'])) {
                     $this->redirect(array('controller' => 'companies'));
                 }

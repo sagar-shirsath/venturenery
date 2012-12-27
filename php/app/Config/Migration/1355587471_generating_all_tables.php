@@ -124,7 +124,9 @@ class GeneratingAllTables extends CakeMigration
                     'username' => array(
                         'type' => 'string',
                         'null' => false,
-                        'default' => NULL
+                        'default' => NULL,
+                        'length'=>50
+
                     ),
                     'first_name' => array(
                         'type' => 'string',
@@ -144,6 +146,7 @@ class GeneratingAllTables extends CakeMigration
                     'password' => array(
                         'type' => 'string',
                         'null' => false,
+                        'length'=>50,
                         'default' => NULL
                     ),
                     'is_active'=>array(
