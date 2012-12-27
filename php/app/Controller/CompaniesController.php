@@ -8,6 +8,14 @@ App::uses('AppController', 'Controller');
 class CompaniesController extends AppController {
 
      public $components = array('Curl');
+
+
+    public function beforeFilter()
+    {
+        parent::beforeFilter();
+        ini_set("memory_limit","500M");
+        ini_set("max_execution_time","2400");
+    }
 /**
  * index method
  *
@@ -99,16 +107,35 @@ class CompaniesController extends AppController {
 	}
 
     public function get_from_crunchbase(){
+        $this->layout = false;
         $this->autoRender = false;
         $this->loadCrunchbaseCompanies();
 //        $esponse_array = $this->Curl->curl_get();
-
+        return true;
 
     }
 
     public function loadCrunchbaseCompanies(){
-        $json_response = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies.js?api_key=ftxykm4s2w3gym4nm8y2pfyg');
-        pr($json_response[0]);die;
+        $jsonResponseInArray = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies.js?api_key=ftxykm4s2w3gym4nm8y2pfyg');
+        $resultToStore = array();
+        foreach($jsonResponseInArray as $key => $companyData){
+            $resultToStore[]=array(
+            'name'=>$companyData->name,
+            'data_fetch_url'=>"http://api.crunchbase.com/v/1/company/".$companyData->permalink.".js",
+            'category_code'=>$companyData->category_code
+             );
+        }
+//        $jsonResponseInArray =  array( 0 => array('name' => 'Wetpaint',
+//            'permalink' => 'wetpaint',
+//            'category_code' => 'web'
+//            ),1 => array('name' => 'abc',
+//            'permalink' => 'xyz',
+//            'category_code' => 'wwwweb'
+//            )
+//        );
+        $this->Company->saveAll($resultToStore);
+        pr("data saved");
+        return true;
     }
 
     public function get_form_angelist(){

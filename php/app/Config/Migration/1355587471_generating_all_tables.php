@@ -32,6 +32,16 @@ class GeneratingAllTables extends CakeMigration
                         'null' => false,
                         'default' => NULL
                     ),
+                    'category_code' => array(
+                        'type' => 'string',
+                        'null' => true,
+                        'default' => NULL
+                    ),
+                    'data_fetch_url' => array(
+                        'type' => 'string',
+                        'null' => true,
+                        'default' => NULL
+                    ),
                     'slug' => array(
                         'type' => 'string',
                         'null' => false,

@@ -53,10 +53,13 @@ class CurlComponent extends Object {
     public function curl_get($url){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FAILONERROR, 1);
         $result=curl_exec($ch);
         $curlerrno = curl_errno($ch);
-        curl_close(json_decode($ch));
+        curl_close($ch);
+        return json_decode($result);
 }
 
 }
