@@ -16,7 +16,7 @@ class CompaniesController extends AppController {
         ini_set("memory_limit","500M");
         ini_set("max_execution_time","24000");
     }
-/**
+/** 
  * index method
  *
  * @return void
