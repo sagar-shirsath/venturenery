@@ -7,14 +7,14 @@ App::uses('AppController', 'Controller');
  */
 class CompaniesController extends AppController {
 
-     public $components = array('Curl');
-
+    public $components = array('Curl');
+    public $crunchBaseKey = "ftxykm4s2w3gym4nm8y2pfyg";
 
     public function beforeFilter()
     {
         parent::beforeFilter();
         ini_set("memory_limit","500M");
-        ini_set("max_execution_time","2400");
+        ini_set("max_execution_time","24000");
     }
 /**
  * index method
@@ -106,7 +106,7 @@ class CompaniesController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
-    public function get_from_crunchbase(){
+    public function get_companies_from_crunchbase(){
         $this->layout = false;
         $this->autoRender = false;
         $this->loadCrunchbaseCompanies();
@@ -115,8 +115,50 @@ class CompaniesController extends AppController {
 
     }
 
+    public function get_data_from_crunchbase(){
+        $this->layout = false;
+        $this->autoRender = false;
+        $this->loadCrunchbaseCompanies();
+//        $esponse_array = $this->Curl->curl_get();
+        return true;
+
+    }
+
+    public function fetch_company_data(){
+        $allCompanies = $this->Company->get_all_companies();
+
+        foreach($allCompanies as $company){  //api_key=ftxykm4s2w3gym4nm8y2pfyg
+            $fetched_data = $this->get_one_company_data($company);
+            $company['Company']['slug'] =  $fetched_data->permalink;
+            $company['Company']['description'] =  $fetched_data->description;
+            $company['Company']['description'] =  $fetched_data->description;
+            $company['Company']['url'] =  $fetched_data->homepage_url;
+            if(!empty($fetched_data->image->available_sizes[0][1])){
+                $company['Company']['logo_url'] =  "http://www.crunchbase.com/".$fetched_data->image->available_sizes[0][1];
+            }
+            $company['Company']['twitter_url'] =  "http://twitter.com/".$fetched_data->twitter_username;
+            $company['Company']['blog_url'] =  "http://twitter.com/".$fetched_data->blog_url;
+
+            $this->Company->save($company);
+            sleep(0.25);
+        }
+
+
+
+        die;
+
+    }
+
+    public function get_one_company_data($company=null){
+        if(!empty($company['Company']['data_fetch_url'])){
+            return $this->Curl->curl_get($company['Company']['data_fetch_url']."?api_key=".$this->crunchBaseKey);
+        }else{
+            return false;
+        }
+    }
+
     public function loadCrunchbaseCompanies(){
-        $jsonResponseInArray = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies.js?api_key=ftxykm4s2w3gym4nm8y2pfyg');
+        $jsonResponseInArray = $this->Curl->curl_get('http://api.crunchbase.com/v/1/companies.js?api_key='.$this->crunchBaseKey);
         $resultToStore = array();
         foreach($jsonResponseInArray as $key => $companyData){
             $resultToStore[]=array(
@@ -125,14 +167,6 @@ class CompaniesController extends AppController {
             'category_code'=>$companyData->category_code
              );
         }
-//        $jsonResponseInArray =  array( 0 => array('name' => 'Wetpaint',
-//            'permalink' => 'wetpaint',
-//            'category_code' => 'web'
-//            ),1 => array('name' => 'abc',
-//            'permalink' => 'xyz',
-//            'category_code' => 'wwwweb'
-//            )
-//        );
         $this->Company->saveAll($resultToStore);
         pr("data saved");
         return true;

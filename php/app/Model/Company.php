@@ -13,4 +13,8 @@ class Company extends AppModel {
  */
 	public $displayField = 'name';
 
+
+    public function get_all_companies(){
+        return $this->find('all');
+    }
 }
