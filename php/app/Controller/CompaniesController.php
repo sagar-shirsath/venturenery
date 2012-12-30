@@ -16,7 +16,7 @@ class CompaniesController extends AppController {
         ini_set("memory_limit","500M");
         ini_set("max_execution_time","24000");
     }
-/** 
+/**
  * index method
  *
  * @return void
@@ -172,10 +172,11 @@ class CompaniesController extends AppController {
         return true;
     }
 
-    public function get_form_angelist(){
+        public function get_form_angelist(){
         $this->autoRender = false;
         $esponse_array = $this->Curl->curl_get("https://api.angel.co/1/startups/batch?ids=6702,171");
-        return $esponse_array;
+
         pr($esponse_array);
+            die;
     }
 }
