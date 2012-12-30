@@ -27,6 +27,10 @@ class AppController extends Controller {
     {
         parent::beforeFilter();
 
+        if ( isset($_GET['ref']) &&!isset($_COOKIE['referral']) ) {
+            setcookie('referral', $_GET['ref'], 2592000 + time());
+        }
+
 
         if ($this->Auth->login()) {
             $this->set('email', $this->Auth->user('email'));
