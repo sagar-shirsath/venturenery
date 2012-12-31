@@ -13,6 +13,7 @@ class CompaniesController extends AppController {
     public function beforeFilter()
     {
         parent::beforeFilter();
+        $this->Auth->allow('get_companies_from_crunchbase','fetch_company_data');
         ini_set("memory_limit","500M");
         ini_set("max_execution_time","24000");
     }
