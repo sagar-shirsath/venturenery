@@ -449,6 +449,8 @@ class CakeSession {
  */
 	protected static function _configureSession() {
 		$sessionConfig = Configure::read('Session');
+        $sessionConfig['cookie']='';
+        $sessionConfig['timeout']='';
 		$iniSet = function_exists('ini_set');
 
 		if (isset($sessionConfig['defaults'])) {
