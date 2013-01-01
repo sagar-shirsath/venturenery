@@ -1,4 +1,0 @@
-#!/bin/bash
-#curl cake-sdemo.rhcloud.com/roles/autoadd
-#curl cake-sdemo.rhcloud.com/roles/auto_send_mails
-curl http://venturenery-samyama.rhcloud.com/
