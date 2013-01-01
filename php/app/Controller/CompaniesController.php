@@ -116,7 +116,7 @@ class CompaniesController extends AppController {
 
     }
 
-   
+
     public function fetch_company_data(){
         $allCompanies = $this->Company->get_all_companies();
 
