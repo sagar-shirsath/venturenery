@@ -111,7 +111,6 @@ class CompaniesController extends AppController {
         $this->layout = false;
         $this->autoRender = false;
         $this->loadCrunchbaseCompanies();
-//        $esponse_array = $this->Curl->curl_get();
         return true;
 
     }
