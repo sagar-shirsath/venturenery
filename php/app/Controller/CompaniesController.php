@@ -116,15 +116,7 @@ class CompaniesController extends AppController {
 
     }
 
-    public function get_data_from_crunchbase(){
-        $this->layout = false;
-        $this->autoRender = false;
-        $this->loadCrunchbaseCompanies();
-//        $esponse_array = $this->Curl->curl_get();
-        return true;
-
-    }
-
+   
     public function fetch_company_data(){
         $allCompanies = $this->Company->get_all_companies();
 
