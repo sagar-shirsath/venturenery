@@ -75,11 +75,11 @@
                     </ul>
                 </li>
             </ul>
-            <?php if(!empty($email)){
-                echo "Welcome ".$email;
-
-
-        }?>
+<!--            --><?php //if(!empty($email)){
+//                echo "Welcome ".$email;
+//
+//
+//        }?>
         </div>
     </div>
 

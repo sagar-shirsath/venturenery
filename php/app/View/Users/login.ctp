@@ -37,8 +37,8 @@
                     echo $this->Form->input('password', array('id' => 'password','label'=>false));
                     ?>
                     <?php echo $this->Form->end(__('Submit'));
-                    echo $this->Html->link('Forgot password', array('action' => 'forgot_password'));
-                    echo $this->Html->link('Register', array('action' => 'register'));
+//                    echo $this->Html->link('Forgot password', array('action' => 'forgot_password'));
+//                    echo $this->Html->link('Register', array('action' => 'register'));
                     ?>
                 </div>
 
