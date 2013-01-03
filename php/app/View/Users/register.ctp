@@ -1,5 +1,3 @@
-
-
 <div class="row">
     <?php echo $this->Html->link('FB Login', array('action' => 'facebook_login'))?>
     <?php echo $this->Form->create('User'); ?>
@@ -11,7 +9,7 @@
         echo $this->Form->input('email', array());
         echo $this->Form->input('type', array('type' => 'radio', 'options' => array('Entrepreneur', 'Investor')));
         echo $this->Form->input('password', array());
-        echo $this->Form->input('confirm_password', array('type'=>'password'));
+        echo $this->Form->input('confirm_password', array('type' => 'password'));
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit'));

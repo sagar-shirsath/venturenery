@@ -12,7 +12,6 @@ class UsersController extends AppController
     {
         parent::beforeFilter();
         $this->Auth->allow('logout', 'register', 'login');
-        $this->set('menuactive', 'users');
     }
 
     public function index()

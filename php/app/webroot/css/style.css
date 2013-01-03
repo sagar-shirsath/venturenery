@@ -1,3 +1,540 @@
-.top20{
-    padding-top: 30px;
+@import url('flexcrollstyles.css');
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+   font-family: 'Open Sans', Helvetica, sans-serif;
+   color: #333;
+   background: #FFF;
+   font-size: 13px;
+}
+
+a {
+color: #777;
+text-decoration: none;
+}
+p {
+	font-size: 11px;
+}
+hr {
+	border: none;
+	height: 1px;
+	background: rgba(255, 255, 255, .5);
+}
+a:hover {
+color: #333;
+text-decoration: underline;
+}
+h1 a:hover, h2 a:hover, h3 a:hover {
+text-decoration:none;
+color: #FFF;
+}
+li.fl-left {
+	text-align: center;
+	color: #FFF;
+	font-weight: 700;
+	text-shadow: 1px 1px 0px #777575;
+}
+.fl-left {
+	float: left;
+}
+.fl-right {
+	float: right;
+}
+.left-align {
+text-align: left;
+}
+.right-align {
+text-align: right;
+}
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-top: 15px;
+}
+.wrapper {
+   width: 960px;
+   margin: 0 auto;
+   background: url('/graphics/cream-gray.gif');
+   box-shadow: 0px 3px 12px #DDD;
+   border-left: 1px solid #CCC;
+   border-right: 1px solid #CCC;
+   }
+
+
+/*container*/
+#container {
+   min-height:100%;
+   position:relative;   
+   z-index: 0; /*Needed for the drop-down menu*/
+}
+.clear {
+clear: both;
+}
+h1, h2, h3, h4, h5, h6 {
+margin: 0;
+padding: 10px 0;
+color: whitesmoke;
+text-shadow: -1px -1px #555;
+font-variant: small-caps;
+}
+h1 {
+font-size: 2.3;
+}
+h2 {
+font-size: 1.9em;
+}
+
+/*Header*/
+
+#header {
+	padding:10px 0;
+	width: 100%;
+	float: left;
+	height: 50px;
+	border-bottom: 1px solid #000;
+
+
+
+	background: #333333; /* Old browsers */
+	background: #393939; /* Old browsers */
+	background: -moz-linear-gradient(top,  #393939 0%, #222222 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#393939), color-stop(100%,#222222)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #393939 0%,#222222 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #393939 0%,#222222 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #393939 0%,#222222 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #393939 0%,#222222 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#393939', endColorstr='#222222',GradientType=0 ); /* IE6-9 */
+
+}
+#logo {
+	width: 200px;
+	float: left;
+	height: 60px;
+	background: url('http://uploads.striking.ly/page/images/custom/6522.png?1348085395');
+	background-size: 184px;
+	}
+
+#content {
+   padding: 0;
+   width: 100%;
+   float: left;
+/* Originally thought to be needed to match the height of the footer, buuuuut, still working without?   padding-bottom:60px;      */
+	position: relative;
+	   z-index: 0;
+}
+#content .wrapper {
+   padding: 20px;
+   min-height: 400px;
+   }
+#overview {
+width: 460px;
+float: left;
+margin-right: 20px;
+}
+#news {
+width: 460px;
+float: left;
+margin-left: 20px;
+}
+.circle-wrapper {
+z-index: 100;
+position: relative;
+}
+.circle {
+border-radius: 260px;
+height: 520px;
+width: 520px;
+margin: 0 auto;
+text-align: center;
+overflow: auto;
+overflow-x:hidden; /* Hide horizontal scroll bar */
+}
+#circle-header {
+padding-bottom: 10px;
+}
+
+#circle-header .name h3 {
+padding: 0;
+color: #DDD;
+text-transform: uppercase;
+font-weight: 600;
+font-size: 13px;
+text-shadow: 1px 1px 1px #555;
+}
+#circle-body {
+text-align: justify;
+padding: 0 70px;
+margin-bottom: 100px;
+}
+
+#circle-footer .back a {
+font-size: 11px;
+color: #FFF;
+}
+
+
+/* Positions for small circles 
+.left-top {
+z-index: 99;
+margin: -16% 0% 0% 34%;
+}
+.left-bottom {
+z-index: 98;
+margin: -20% 0% 0% 28%;
+}
+.right-bottom {
+z-index: 97;
+margin: -22% 0% 0% 48%;
+}
+.right-top {
+z-index: 96;
+margin: -38% 0% 0% 53%;
+}*/
+#more {
+     visibility: hidden;
+     position: absolute;
+     left: 0;
+     top: 0;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+}
+.top-left, .bottom-left, .top-right, .bottom-right {
+height: 260px;
+width: 260px;
+float: left;
+position: relative;
+border: 1px solid #202020;
+background: #222;
+}
+.top-left:hover, .bottom-left:hover, .top-right:hover, .bottom-right:hover {
+box-shadow: inset 0px 0px 8px #1F1F1F;
+}
+.top-left h2, .top-right h2 {
+margin-top: 130px;
+}
+.bottom-left h2, .bottom-right h2 {
+margin-top: 70px;
+}
+.top-left {
+/* background: blue; */
+border-top-left-radius: 260px;
+margin-top: -2px;
+margin-left: -2px;
+}
+.bottom-left {
+/* background: yellow; */
+border-bottom-left-radius: 260px;
+margin-bottom: -2px;
+margin-left: -2px;
+
+}
+.top-right {
+/* background: pink; */
+border-top-right-radius: 260px;
+margin-top: -2px;
+margin-right: -2px;
+
+}
+.bottom-right {
+/* background: green; */
+border-bottom-right-radius: 260px;
+margin-right: -2px;
+margin-bottom: -2px;
+
+}
+
+#overlay {
+     visibility: hidden;
+     position: absolute;
+     left: 0;
+     top: 0;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background: rgba(0,0,0,.4);
+}
+#overlay h3 {
+	width: 150px;
+	background: #333;
+	border-radius: 3px;
+	border: 1px solid #222;
+	margin: 0 auto;
+	box-shadow: 1px 1px 0px #888;
+}
+#overlay h2 {
+margin-top: 72px;
+}
+
+#overlay a h3:hover {
+text-decoration: none;
+}
+
+.center-bottom {
+z-index: 99;
+margin: -10% 0% 0% 43.7%;
+}
+.center-bottom h6 {
+text-shadow: none;
+color: #CCC;
+padding-top: 96px;
+font-size: 14px;
+font-variant: small-caps;
+font-weight: 300;
+}
+
+a.center-bottom:hover {
+text-decoration: none;
+color: #666;
+}
+/* Circles */
+.small-circle {
+border-radius: 100px;
+height: 200px;
+width: 200px;
+text-align: center;
+float: left;
+margin: 25% 4px 50px;
+}
+.extra-small-circle {
+border-radius: 60px;
+height: 120px;
+width: 120px;
+text-align: center;
+position: relative;
+margin: -90px auto 0;
+z-index: 98;
+}
+.square {
+width: 600px;
+margin: 0 auto;
+text-align: center;
+overflow: auto;
+overflow-x:hidden; /* Hide horizontal scroll bar */
+}
+
+#circle-body table {
+text-align: center;
+margin: 15% auto 0px;
+background: white;
+border-radius: 5px;
+border: 1px solid #AAA;
+}
+td {
+padding: 7px;
+}
+
+
+/* Footer */
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+   background:#333;
+   border-top: 1px solid #ACACAC;
+   box-shadow: inset 0px 5px 8px #252525;
+}
+
+/* Colors for circles */
+
+/* Green */
+.green {
+background: #91C73F;
+box-shadow: inset 0px 0px 7px #7CAC33;
+border: 1px solid #6B9C20;
+}
+.green-header {
+background: #589635;
+box-shadow: inset 0px -5px 16px #3B741A;
+border-bottom: 1px solid #97DD75;
+}
+.green:hover {
+background: #87B83C;
+}
+
+
+/* Red */
+.red {
+background: #C02A16;
+box-shadow: inset 0px 0px 7px #8F1B0C;
+border: 1px solid #771306;
+}
+.red-header {
+background: #771306;
+box-shadow: inset 0px -5px 16px #5C0E03;
+border-bottom: 1px solid #D53D2A;
+}
+.red:hover {
+background: #DA422D;
+box-shadow: inset 0px 0px 7px #DA422D;
+}
+/* Blue */
+.blue {
+background: #8CC6D5;
+box-shadow: inset 0px 0px 7px #59A3B6;
+border: 1px solid #71AFBE;
+}
+
+.blue-header {
+background: #286E96;
+box-shadow: inset 0px -5px 16px #1F526F;
+border-bottom: 1px solid #87CDDF;
+}
+.small-circle.blue:hover {
+background: #69C2DA;
+border: 1px solid #71AFBE;
+}
+/* Yellow */
+.yellow {
+background: #FFD362;
+box-shadow: inset 0px 0px 7px #BEBA5C;
+border: 1px solid #D8A70C;
+}
+.yellow-header {
+background: #F5C854;
+box-shadow: inset 0px -5px 16px #F1B008;
+border-bottom: 1px solid #FCEDB1;
+}
+.yellow:hover {
+background: #FAC34F;
+border: 1px solid #D8A70C;
+}
+/* White */
+.white {
+background: #FFF;
+box-shadow: inset 0px 0px 16px #DDD;
+border: 1px solid #DDD;
+visibility: visible;
+}
+.white:hover {
+background: #EEE;
+box-shadow: inset 0px 0px 16px #DDD;
+border: 1px solid #D1D1D1;
+}
+
+/*Search box*/
+.search-box {
+	float: left;
+	}
+.search-box input {
+    height:30px;
+    width:332px;
+    margin:0;
+    position:absolute;
+    font-size:13px;
+    padding-left:5px;
+    padding-right:5px;
+    background: #CCC;
+    border: 1px solid #222;
+    border-radius: 5px;    
+    box-shadow: inset 0px 0px 5px #0A0A0A;
+    color: #444;
+/*     font-weight: 400; */
+}
+.search-box input:focus {
+	outline: -webkit-focus-ring-color auto 0px;
+	outline-offset: 0px;
+    background: #FFF;
+    border: 1px solid #535353;
+    border-radius: 5px;    
+    box-shadow: inset 0px 0px 5px #525252;
+    color: #999;
+    font-weight: 400;
+}
+input.submit-button {
+	display: none;
+    cursor:pointer;
+}
+
+.focusField{  
+	border:solid 2px #73A6FF;  
+	background:#EFF5FF;  
+	color:#000;  
+}  
+.idleField{  
+	background:#EEE;  
+	color: #6F6F6F;  
+	border: solid 2px #DFDFDF;  
+} 
+
+/* Nav menu */
+
+/* These styles create the dropdown menus. */
+#navbar {
+   margin: 0;
+   padding: 0;
+   height: 1em; 
+   float: right;
+}
+#navbar li {
+   list-style: none;
+   float: left; }
+#navbar li a {
+   display: block;
+   padding: 3px 8px;
+   color: #fff;
+   text-decoration: none; }
+#navbar li ul {
+   display: none; 
+   width: 10em; /* Width to help Opera out */
+   z-index: 100;
+   background: #FFF;
+   border-radius: 3px;
+   border: 1px solid #E7E7E7;
+}
+#navbar li:hover ul, #navbar li.hover ul {
+   display: block;
+   position: absolute;
+   margin: 0;
+   padding: 10px 0; 
+}
+   
+#navbar li:hover li, #navbar li.hover li {
+   float: none; }
+   
+#navbar li:hover li a, #navbar li.hover li a {
+   color: #000; }
+#navbar li li a {
+	border-bottom: 1px solid #FFF;
+}   
+#navbar li li a:hover {
+   border-bottom: 1px solid #E0E0E0;
+   background: #F1F1F1;
+}
+
+/*Forms*/
+.circle-wrapper form {
+	margin-top: 60px;
+}
+.circle-wrapper form input {
+	width: 220px;
+	border-radius: 5px;
+	border: 1px solid #84BBE7;
+	margin-bottom: 10px;
+	height: 28px;
+	color: #999;
+	text-align: center;
+	font-size: 17px;
+}
+.circle-wrapper form input[type="radio"] {
+	width: 18px;
+	margin: 0 auto;
+}
+/*Watchlist ul and li elements*/
+.watchlist li {
+	margin: 10px 0;
+}
+.watchlist img {
+	border: 1px solid #AAA;
+	padding: 5px;
+	background: whitesmoke;
+	width: 70px;
 }

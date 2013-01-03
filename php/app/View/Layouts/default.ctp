@@ -1,121 +1,99 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       Cake.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
- */
-
-
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $title_for_layout; ?>
-	</title>
-	<?php
-		echo $this->Html->meta('icon');
+    <!--    <link href="style.css" rel="stylesheet" type="text/css">-->
+    <?php
+    echo $this->fetch('meta');
+    echo $this->fetch('css');
+    echo $this->fetch('script');
+    echo $this->Html->css(array('style'));
+    echo $this->Html->script('flexcroll');
+    ?>
+    <!--    <script type='text/javascript' src="flexcroll.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type='text/javascript'>
+        function showMore() {
+            {
+                more = document.getElementById("more");
+                more.style.visibility = (more.style.visibility == "visible") ? "hidden" : "visible";
+            }
+            {
+                more = document.getElementById("more");
+                more.style.visibility = (more.style.display == "block") ? "none" : "block";
+            }
+// 	{	main = document.getElementById("main");
+// 		main.style.visibility = (main.style.visibility == "visible") ? "hidden" : "visible";
+// 	}
+        }
 
-//		echo $this->Html->css('cake.generic');
+        function overlay() {
+            el = document.getElementById("overlay");
+            el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-        echo $this->Html->css(array('bootstrap','bootstrap.min','bootstrap-responsive','bootstrap-responsive.min.css','style'));
-        echo $this->Html->css('bootstrap.min');
-        echo $this->Html->script('bootstrap-buttons');
-        echo $this->Html->script('bootstrap-alerts');
-        echo $this->Html->script('bootstrap-dropdown');
-        echo $this->Html->script('bootstrap-modal');
-        echo $this->Html->script('bootstrap-popover');
-        echo $this->Html->script('bootstrap-scrollspy');
-        echo $this->Html->script('bootstrap-tabs');
-        echo $this->Html->script('bootstrap-twipsy');
-
-	?>
+        }
+    </script>
 </head>
-<body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+
+<body>
+<div id="container">
+    <div id="header">
+        <div class="wrapper">
+            <a href="/users/dashboard">
+                <div id="logo">
+                </div>
             </a>
-            <?php echo $this->Html->link('Venturenary',array('controller'=>'users','action'=>'dashboard'),array('class'=>"brand"));?>
-            <!--            <a class="brand" href="/">Feedback</a/>-->
-            <div class="nav-collapse" id="main-menu">
-                <ul class="nav" id="main-menu-left">
-                    <!--                    <li><a onclick="pageTracker._link(this.href); return false;" href="http://news.bootswatch.com">News</a></li>-->
-                    <!--                    <li><a id="swatch-link" href="/#gallery">Gallery</a></li>-->
-                    <!--                    <li class="dropdown">-->
-                    <!--                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Preview <b class="caret"></b></a>-->
-                    <!--                        <ul class="dropdown-menu" id="swatch-menu">-->
-                    <!--                            <li><a href="../default">Default</a></li>-->
-                    <!--                            <li class="divider"></li>-->
-                    <!--                            <li><a href="../amelia">Amelia</a></li>-->
-                    <!--                            <li><a href="../cerulean">Cerulean</a></li>-->
-                    <!--                            <li><a href="../cosmo">Cosmo</a></li>-->
-                    <!--                            <li><a href="../cyborg">Cyborg</a></li>-->
-                    <!--                            <li><a href="../journal">Journal</a></li>-->
-                    <!--                            <li><a href="../readable">Readable</a></li>-->
-                    <!--                            <li><a href="../simplex">Simplex</a></li>-->
-                    <!--                            <li><a href="../slate">Slate</a></li>-->
-                    <!--                            <li><a href="../spacelab">Spacelab</a></li>-->
-                    <!--                            <li><a href="../spruce">Spruce</a></li>-->
-                    <!--                            <li><a href="../superhero">Superhero</a></li>-->
-                    <!--                            <li><a href="../united">United</a></li>-->
-                    <!--                        </ul>-->
-                    <!--                    </li>-->
-                    <!--                    <li class="dropdown" id="preview-menu">-->
-                    <!--                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Download <b class="caret"></b></a>-->
-                    <!--                        <ul class="dropdown-menu">-->
-                    <!--                            <li><a target="_blank" href="bootstrap.min.css">bootstrap.min.css</a></li>-->
-                    <!--                            <li><a target="_blank" href="bootstrap.css">bootstrap.css</a></li>-->
-                    <!--                            <li class="divider"></li>-->
-                    <!--                            <li><a target="_blank" href="variables.less">variables.less</a></li>-->
-                    <!--                            <li><a target="_blank" href="bootswatch.less">bootswatch.less</a></li>-->
-                    <!--                        </ul>-->
-                    <!--                    </li>-->
-                </ul>
-                <?php if(!empty($username)){?>
-                <ul class="nav pull-right" id="main-menu-right">
-                    <li><a href="">Welcome <?php echo $username?> </a></li>
-                    <li><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'))?></li>
-                </ul>
-                <?php }?>
+
+
+            <!-- 		Searchbar -->
+            <div class="search-wrapper">
+                <form action="#" name="search">
+                    <div class="search-box">
+                        <input name="seach" type="text" value="Search..."/>
+                    </div>
+                    <input class="submit-button" name="Go" type="submit"/>
+                </form>
             </div>
+
+            <!-- 		Dropdown menu -->
+            <ul id="navbar">
+                <!-- The strange spacing herein prevents an IE6 whitespace bug. -->
+                <li><a href="company.php">Company</a>
+                <li>
+                <li><a href="person.php">Person</a>
+                <li>
+                <li><a href="#">Menu</a>
+                    <ul>
+                        <li><?php echo $this->Html->link('Home',array('controller'=>"users",'action'=>'dashboard'));?></li>
+                        <?php if(empty($email)){ ?>
+                        <li><?php echo $this->Html->link('Register',array('controller'=>"users",'action'=>'register'));?> </li>
+                        <li><?php echo $this->Html->link('Login',array('controller'=>"users",'action'=>'login'));?></li>
+                        <?php }else{?>
+                        <li><?php echo $this->Html->link('Logout',array('controller'=>"users",'action'=>'logout'));?></li>
+                        <?php }?>
+                        <li><a href="">My Watchlist</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <?php if(!empty($email)){
+                echo "Welcome ".$email;
+
+
+        }?>
         </div>
     </div>
+
+    <?php echo $this->Session->flash(); ?>
+    <?php echo $this->fetch('content'); ?>
+<div id="footer">
+    <div class="wrapper">
+    </div>
+    <!-- End of footer id -->
 </div>
-
-	<div id="container">
-		<div id="header">
-		</div>
-		<div id="content" class="container">
-
-			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-
-
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
+</div>
+<!-- 2 -->
 </body>
+
+<?php echo $this->element('sql_dump'); ?>
+
 </html>
