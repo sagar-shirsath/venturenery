@@ -117,8 +117,9 @@ class CompaniesController extends AppController {
 
 
     public function fetch_company_data(){
+        $this->autoRender = false;
+        $this->setLayout = false;
         $allCompanies = $this->Company->get_all_companies();
-
         foreach($allCompanies as $company){  //api_key=ftxykm4s2w3gym4nm8y2pfyg
             $fetched_data = $this->get_one_company_data($company);
             $company['Company']['slug'] =  $fetched_data->permalink;
@@ -132,12 +133,16 @@ class CompaniesController extends AppController {
             $company['Company']['blog_url'] =  "http://twitter.com/".$fetched_data->blog_url;
 
             $this->Company->save($company);
+
+            $company_id = $this->Company->id;
+
+
             sleep(0.25);
         }
 
 
 
-        die;
+        exit;
 
     }
 

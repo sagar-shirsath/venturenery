@@ -58,9 +58,9 @@
             <!-- 		Dropdown menu -->
             <ul id="navbar">
                 <!-- The strange spacing herein prevents an IE6 whitespace bug. -->
-                <li><a href="company.php">Company</a>
+                <li><?php echo $this->Html->link('Company',array('controller'=>'companies','action'=>'index'))?>
                 <li>
-                <li><a href="person.php">Person</a>
+                <li><?php echo $this->Html->link('Person',array('controller'=>'employees','action'=>'index'))?>
                 <li>
                 <li><a href="#">Menu</a>
                     <ul>
