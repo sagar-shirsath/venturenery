@@ -24,7 +24,10 @@ class CompaniesController extends AppController {
  */
 	public function index() {
 		$this->Company->recursive = 0;
-		$this->set('companies', $this->paginate());
+        $ComapiesData =  $this->Company->getAllCompanies();
+        $ComapiesData =   $this->paginate();
+
+		$this->set('companies', $ComapiesData);
 	}
 
 /**

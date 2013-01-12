@@ -2,19 +2,9 @@
 	<h2><?php echo __('Companies'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
-			<th><?php echo $this->Paginator->sort('industry'); ?></th>
-			<th><?php echo $this->Paginator->sort('url'); ?></th>
-			<th><?php echo $this->Paginator->sort('logo_url'); ?></th>
-			<th><?php echo $this->Paginator->sort('slogan'); ?></th>
-			<th><?php echo $this->Paginator->sort('twitter_url'); ?></th>
-			<th><?php echo $this->Paginator->sort('fb_url'); ?></th>
-			<th><?php echo $this->Paginator->sort('linkedin_url'); ?></th>
-			<th><?php echo $this->Paginator->sort('blog_url'); ?></th>
-			<th><?php echo $this->Paginator->sort('video_url'); ?></th>
-			<th><?php echo $this->Paginator->sort('is_active'); ?></th>
+			<th><?php echo $this->Paginator->sort('name','Comapny Name'); ?></th>
+		    <th><?php echo $this->Paginator->sort('logo_url','company Logo'); ?></th>
+
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -22,20 +12,15 @@
 	<?php
 	foreach ($companies as $company): ?>
 	<tr>
-		<td><?php echo h($company['Company']['id']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['name']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['description']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['industry']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['logo_url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['slogan']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['twitter_url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['fb_url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['linkedin_url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['blog_url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['video_url']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['is_active']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['created']); ?>&nbsp;</td>
+		<td><?php
+            if(!empty($company['Company']['logo_url']))
+                echo $this->Html->image($company['Company']['logo_url'], array(
+            "alt" => "Logo",
+            'url' => array('action' => 'view', $company['Company']['id'])
+        )); ?>&nbsp;
+        </td>
+        <td><?php echo h($company['Company']['created']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['modified']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>

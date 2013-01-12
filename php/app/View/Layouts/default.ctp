@@ -71,7 +71,7 @@
                         <?php }else{?>
                         <li><?php echo $this->Html->link('Logout',array('controller'=>"users",'action'=>'logout'));?></li>
                         <?php }?>
-                        <li><a href="">My Watchlist</a></li>
+                        <li><?php echo $this->Html->link('My Watchlist',array('controller'=>"watch_lists",'action'=>'index'));?><a href=""></a></li>
                     </ul>
                 </li>
             </ul>

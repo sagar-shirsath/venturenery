@@ -179,4 +179,7 @@ class Company extends AppModel {
 		)
 	);
 
+    public function getAllCompanies(){
+        return $this->find('all',array('conditions'=>array('logo_url !='=>""),'fields'=>array('id','name','logo_url')));
+    }
 }
