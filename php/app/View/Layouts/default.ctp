@@ -7,7 +7,7 @@
     echo $this->fetch('meta');
     echo $this->fetch('css');
     echo $this->fetch('script');
-    echo $this->Html->css(array('style'));
+    echo $this->Html->css(array('style','developers'));
     echo $this->Html->script('flexcroll');
     ?>
     <!--    <script type='text/javascript' src="flexcroll.js"></script>-->
@@ -32,6 +32,18 @@
             el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
         }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('#flashMessage').fadeIn(2000);
+                $('#flashMessage').fadeOut(2000);
+            }, 4000);
+        });
+        $(document).on('click', '#loginButton', function () {
+            $('#loginBox').toggleClass('login_active');
+//        $('#loginBox').css('display', 'block');
+        });
     </script>
 </head>
 
@@ -82,8 +94,10 @@
 //        }?>
         </div>
     </div>
+    <div class="alert alert-info offset6 span4 flash_message">
+        <?php echo $this->Session->flash(); ?>
+    </div>
 
-    <?php echo $this->Session->flash(); ?>
     <?php echo $this->fetch('content'); ?>
 <div id="footer">
     <div class="wrapper">

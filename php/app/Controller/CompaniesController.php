@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class CompaniesController extends AppController {
 
     public $components = array('Curl');
-    public $crunchBaseKey = "ftxykm4s2w3gym4nm8y2pfyg";
+    public $crunchBaseKey = "tp5vhpdhzv6w48w4q7b7cscr";
 
     public function beforeFilter()
     {
@@ -122,10 +122,11 @@ class CompaniesController extends AppController {
     public function fetch_company_data(){
         $this->autoRender = false;
         $this->setLayout = false;
-        $allCompanies = $this->Company->get_all_companies();
-        foreach($allCompanies as $company){  //api_key=ftxykm4s2w3gym4nm8y2pfyg
+        $allCompanies = $this->Company->get_fetch_url();
+        foreach($allCompanies as $company){  //api_key=tp5vhpdhzv6w48w4q7b7cscr
             $fetched_data = $this->get_one_company_data($company);
             $company['Company']['slug'] =  $fetched_data->permalink;
+//            pr($fetched_data);
             $company['Company']['description'] =  $fetched_data->description;
             $company['Company']['description'] =  $fetched_data->description;
             $company['Company']['url'] =  $fetched_data->homepage_url;
@@ -136,11 +137,28 @@ class CompaniesController extends AppController {
             $company['Company']['blog_url'] =  "http://twitter.com/".$fetched_data->blog_url;
 
             $this->Company->save($company);
-
+            $employeeData = array();
             $company_id = $this->Company->id;
+            if(!empty($fetched_data->relationships)){
+                foreach($fetched_data->relationships as $employee){
+                    if(!empty($employee->person->image->available_sizes[0][1]))
+                        $employeeData[]=array(
+                    'type' => $employee->title,
+                    'name' => $employee->person->first_name."  ".$employee->person->last_name,
+                    'photo_url' => "http://www.crunchbase.com/".$employee->person->image->available_sizes[0][1],
+                    'data_fetch_url' => "http://api.crunchbase.com/v/1/person/".$employee->person->permalink.".js",
+                    'company_id' => $company_id,
 
+                    );
 
-            sleep(0.25);
+                }
+            }
+            $this->Company->Employee->saveAll($employeeData);
+
+//
+//            $this->Company->Employee->create();
+//            $employee['Employee']['data_fetch_url']="api.crunchbase.com/v/1/person/"
+            sleep(0.10);
         }
 
 
