@@ -14,7 +14,9 @@ class EmployeesController extends AppController {
  */
 	public function index() {
 		$this->Employee->recursive = 0;
-		$this->set('employees', $this->paginate());
+        $employees = $this->Employee->getAllEmployees();
+        $employees = $this->paginate();
+		$this->set('employees', $employees);
 	}
 
 /**
@@ -73,7 +75,7 @@ class EmployeesController extends AppController {
 		} else {
 			$this->request->data = $this->Employee->read(null, $id);
 		}
-		$companies = $this->Employee->Company->find('list');
+//		$companies = $this->Employee->Company->find('list');
 		$this->set(compact('companies'));
 	}
 

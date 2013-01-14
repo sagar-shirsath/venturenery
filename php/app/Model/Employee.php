@@ -88,4 +88,8 @@ class Employee extends AppModel {
 			'order' => ''
 		)
 	);
+
+    public function getAllEmployees(){
+        return $this->find('all',array('conditions'=>array('logo_url !='=>""),'fields'=>array('id','name','photo_url')));
+    }
 }
