@@ -33,7 +33,7 @@ class UsersController extends AppController
             }
 
             $this->Session->setFlash(__('Email and Password don\'t match , please try again'));
-            $this->redirect(array('controller'=>'user','action'=>'login'));
+            $this->redirect(array('controller'=>'users','action'=>'login'));
         }
     }
 
