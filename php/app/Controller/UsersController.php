@@ -32,8 +32,8 @@ class UsersController extends AppController
 
             }
 
-            $this->Session->setFlash(__('Password can not be updated, please try again'));
-            $this->redirect($this->referer());
+            $this->Session->setFlash(__('Email and Password don\'t match , please try again'));
+            $this->redirect(array('controller'=>'user','action'=>'login'));
         }
     }
 
