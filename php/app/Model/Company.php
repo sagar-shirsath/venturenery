@@ -180,13 +180,13 @@ class Company extends AppModel {
 	);
 
     public function getAllCompanies(){
-        return $this->find('all',array('conditions'=>array('logo_url !='=>""),'fields'=>array('id','name','logo_url')));
+        return $this->find('all',array('conditions'=>array('Company.logo_url !='=>""),'fields'=>array('Company.id','Company.name','logo_url')));
     }
 
     public function get_fetch_url(){
         $this->unbindModel(array('hasMany'=>array('Employee','Watchlist')));
 //        return $this->find('all',array('conditions'=>array('logo_url'=>""),'fields'=>array('id','data_fetch_url'),'limit'=>1000));
-        return $this->find('all',array('conditions'=>array(),'fields'=>array('id','data_fetch_url'),'limit'=>20));
+        return $this->find('all',array('conditions'=>array('Company.logo_url !='=>""),'fields'=>array('Company.id','Company.data_fetch_url'),'limit'=>20));
     }
 
     public function getSearchedComapnies($query){
