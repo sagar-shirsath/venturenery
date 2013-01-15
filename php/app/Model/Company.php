@@ -188,4 +188,8 @@ class Company extends AppModel {
 //        return $this->find('all',array('conditions'=>array('logo_url'=>""),'fields'=>array('id','data_fetch_url'),'limit'=>1000));
         return $this->find('all',array('conditions'=>array(),'fields'=>array('id','data_fetch_url'),'limit'=>10));
     }
+
+    public function getSearchedComapnies($query){
+        return $this->find('all',array('conditions'=>array('Company.logo_url !='=>"",'OR'=>array('Company.name LIKE'=>  '%'.$query.'%')),'limit'=>4));
+    }
 }

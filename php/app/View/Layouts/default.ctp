@@ -59,12 +59,14 @@
 
             <!-- 		Searchbar -->
             <div class="search-wrapper">
-                <form action="#" name="search">
+                <?php echo  $this->Form->create('Search',array('type'=>'get','url'=>'/companies/search')) ?>
+<!--                <form action="#" name="search">-->
                     <div class="search-box">
-                        <input name="seach" type="text" value="Search..."/>
+
+                        <input name="search" type="text" placeholder="Search..."/>
                     </div>
-                    <input class="submit-button" name="Go" type="submit"/>
-                </form>
+
+                <?php echo $this->Form->end();?>
             </div>
 
             <!-- 		Dropdown menu -->

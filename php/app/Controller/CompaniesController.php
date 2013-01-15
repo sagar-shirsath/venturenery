@@ -13,7 +13,8 @@ class CompaniesController extends AppController {
     public function beforeFilter()
     {
         parent::beforeFilter();
-        $this->Auth->allow('get_companies_from_crunchbase','fetch_company_data');
+        $this->Auth->allow('get_companies_from_crunchbase','fetch_company_data','search','get_all_searched_companies',
+        'get_all_searched_employees');
         ini_set("memory_limit","500M");
         ini_set("max_execution_time","24000");
     }
@@ -197,5 +198,54 @@ class CompaniesController extends AppController {
 
         pr($esponse_array);
             die;
+    }
+
+
+    public function get_all_searched_companies(){
+             $query = $this->params->query;
+             if(!empty($query['search']))
+             {
+                 $query = $query['search'];
+                 $this->paginate = array(
+                     'conditions' => array('Company.logo_url !='=>"",'OR'=>array('Company.name LIKE'=>  '%'.$query.'%')),
+                     'limit' => 20
+                 );
+                 $companies = $this->paginate('Company');
+                $this->set(array('companies'=>$companies));
+//                $comapnies = $this->Company->getSearchedComapnies($searchKey);
+
+//                $this->Company->Employee->getSearchedEmployees();
+             }
+
+    }
+    public function get_all_searched_employees(){
+             $query = $this->params->query;
+             if(!empty($query['search']))
+             {
+                 $query = $query['search'];
+                 $this->paginate = array(
+                     'conditions' => array('Employee.logo_url !='=>"",'OR'=>array('Employee.name LIKE'=>  '%'.$query.'%')),
+                     'limit' => 20
+                 );
+                 $employees = $this->paginate('Employee');
+                $this->set(array('employees'=>$employees));
+//                $comapnies = $this->Company->getSearchedComapnies($searchKey);
+
+//                $this->Company->Employee->getSearchedEmployees();
+             }
+
+    }
+
+    public function search(){
+        $query = $this->params->query;
+        if(!empty($query['search'])){
+            $search_query = $query['search'];
+            $companies = $this->Company->getSearchedComapnies($search_query);
+            $employees =  $this->Company->Employee->getSearchedEmployees($search_query);
+
+        }
+
+
+        $this->set(array('companies'=>$companies,'employees'=>$employees,'search_query'=>$search_query));
     }
 }

@@ -89,6 +89,10 @@ class Employee extends AppModel {
 		)
 	);
 
+    public function getSearchedEmployees($query){
+        return $this->find('all',array('conditions'=>array('Employee.photo_url !='=>"",'OR'=>array('Employee.name LIKE'=>  '%'.$query.'%')),'limit'=>4));
+    }
+
     public function getAllEmployees(){
         return $this->find('all',array('conditions'=>array('logo_url !='=>""),'fields'=>array('id','name','photo_url')));
     }
