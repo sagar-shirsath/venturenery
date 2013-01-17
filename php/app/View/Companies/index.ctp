@@ -25,6 +25,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $company['Company']['id'])); ?>
+			<?php echo $this->Html->link(__('Add to wach List'), array('action' => 'add_to_watch_list', $company['Company']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?>
 		</td>
 	</tr>

@@ -102,4 +102,11 @@ class WatchlistsController extends AppController {
 		$this->Session->setFlash(__('Watchlist was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+//    public function check_the_watch_list($coompany_id){
+//            $count  = $this->Watchlist->find('count',array('conditons'=>array('company_id'=>$coompany_id,'user_id'=>$this->loggedInUserId())));
+//            if($count>0){
+//
+//            }
+//    }
 }

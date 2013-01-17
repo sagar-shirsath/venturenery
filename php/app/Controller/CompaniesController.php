@@ -25,8 +25,17 @@ class CompaniesController extends AppController {
  */
 	public function index() {
 		$this->Company->recursive = 0;
-        $ComapiesData =  $this->Company->getAllCompanies();
-        $ComapiesData =   $this->paginate();
+//        $ComapiesData =  $this->Company->getAllCompanies();
+//        $ComapiesData =   $this->paginate();
+//        $user = $this->Company->Watchlist->User->findById($this->Auth->user('id'));
+//        pr($user);
+        $this->paginate = array(
+            'conditions'=>array('Company.logo_url !='=>""),
+            'fields'=>array('Company.id','Company.name','logo_url','created','modified'),
+
+            'limit' => 20
+        );
+        $ComapiesData = $this->paginate('Company');
 
 		$this->set('companies', $ComapiesData);
 	}
@@ -123,11 +132,11 @@ class CompaniesController extends AppController {
     public function fetch_company_data(){
         $this->autoRender = false;
         $this->setLayout = false;
+
         $allCompanies = $this->Company->get_fetch_url();
         foreach($allCompanies as $company){  //api_key=tp5vhpdhzv6w48w4q7b7cscr
             $fetched_data = $this->get_one_company_data($company);
             $company['Company']['slug'] =  $fetched_data->permalink;
-//            pr($fetched_data);
             $company['Company']['description'] =  $fetched_data->description;
             $company['Company']['description'] =  $fetched_data->description;
             $company['Company']['url'] =  $fetched_data->homepage_url;
@@ -173,6 +182,7 @@ class CompaniesController extends AppController {
         if(!empty($company['Company']['data_fetch_url'])){
             return $this->Curl->curl_get($company['Company']['data_fetch_url']."?api_key=".$this->crunchBaseKey);
         }else{
+            pr("Noo");die;
             return false;
         }
     }
@@ -238,6 +248,7 @@ class CompaniesController extends AppController {
 
     public function search(){
         $query = $this->params->query;
+        $companies = $employees = array();
         if(!empty($query['search'])){
             $search_query = $query['search'];
             $companies = $this->Company->getSearchedComapnies($search_query);
@@ -247,5 +258,17 @@ class CompaniesController extends AppController {
 
 
         $this->set(array('companies'=>$companies,'employees'=>$employees,'search_query'=>$search_query));
+    }
+
+    public function add_to_watch_list($company_id){
+            $watch_company = array(
+                'company_id'=>$company_id,
+                'user_id'=>$this->loggedInUserId()
+
+            );
+
+           if($this->Company->Watchlist->save($watch_company)){
+               $this->redirect(array('action' => 'index'));
+           }
     }
 }

@@ -5,6 +5,22 @@ class User extends AppModel {
 
     public $displayField = 'name';
 
+    public $hasMany = array(
+        'Watchlist' => array(
+            'className' => 'Watchlist',
+            'foreignKey' => 'company_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
+
     public function check_exists($data){
          $user = $this->find('first',array('conditions'=>array('email'=>$data['User']['email'])));
         if(!empty($user)){
