@@ -187,7 +187,7 @@ class Company extends AppModel {
     public function get_fetch_url(){
         $this->unbindModel(array('hasMany'=>array('Employee','Watchlist')));
 //        return $this->find('all',array('conditions'=>array('logo_url'=>""),'fields'=>array('id','data_fetch_url'),'limit'=>1000));
-        return $this->find('all',array('conditions'=>array('Company.logo_url'=>""),'fields'=>array('Company.id','Company.data_fetch_url'),'limit'=>10));
+        return $this->find('all',array('conditions'=>array('Company.logo_url'=>""),'fields'=>array('Company.id','Company.data_fetch_url'),'limit'=>5));
     }
 
     public function getSearchedComapnies($query){
