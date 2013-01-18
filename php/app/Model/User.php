@@ -8,7 +8,7 @@ class User extends AppModel {
     public $hasMany = array(
         'Watchlist' => array(
             'className' => 'Watchlist',
-            'foreignKey' => 'company_id',
+            'foreignKey' => 'user_id',
             'dependent' => false,
             'conditions' => '',
             'fields' => '',

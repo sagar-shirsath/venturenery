@@ -1,4 +1,4 @@
-<div class="companies index">
+    <div class="companies index">
     <h2><?php echo __('Companies'); ?></h2>
     <table cellpadding="0" cellspacing="0">
         <tr>
