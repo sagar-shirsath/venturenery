@@ -538,3 +538,7 @@ input.submit-button {
 	background: whitesmoke;
 	width: 70px;
 }
+
+.ValidationErrors{
+        color: red;
+}

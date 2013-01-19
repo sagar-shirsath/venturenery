@@ -8,10 +8,10 @@
     echo $this->fetch('css');
     echo $this->fetch('script');
     echo $this->Html->css(array('style','developers'));
-    echo $this->Html->script('flexcroll');
+    echo $this->Html->script(array('jquery1.7.2','flexcroll','validation','validation.function'));
     ?>
     <!--    <script type='text/javascript' src="flexcroll.js"></script>-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
     <script type='text/javascript'>
         function showMore() {
             {
@@ -22,9 +22,7 @@
                 more = document.getElementById("more");
                 more.style.visibility = (more.style.display == "block") ? "none" : "block";
             }
-// 	{	main = document.getElementById("main");
-// 		main.style.visibility = (main.style.visibility == "visible") ? "hidden" : "visible";
-// 	}
+
         }
 
         function overlay() {
@@ -36,9 +34,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             setTimeout(function () {
-                $('#flashMessage').fadeIn(2000);
-                $('#flashMessage').fadeOut(2000);
-            }, 4000);
+                $('#flashMessage').fadeIn(3000);
+                $('#flashMessage').fadeOut(3000);
+            }, 5000);
         });
         $(document).on('click', '#loginButton', function () {
             $('#loginBox').toggleClass('login_active');

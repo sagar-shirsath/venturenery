@@ -1,4 +1,45 @@
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#email_id").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter Email</div>"
+        });
+        jQuery("#email_id").validate({
+            expression:"if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
+            message:"<div>Enter valid email id</div>"
+        });
 
+        jQuery("#password").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter password</div>"
+        });
+        jQuery("#confirm_password").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter Confirm  password</div>"
+        });
+
+        jQuery("#first_name").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter First Name</div>"
+        });
+
+        jQuery("#last_name").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter Last Name</div>"
+        });
+
+        jQuery(".type_class").validate({
+            expression:"if ()) return true; else return false;",
+            message:"<div>Please select type</div>"
+        });
+
+        function radioCheck(id){
+            alert(id);
+        }
+
+
+    });
+</script>
 <div id="content">
     <div class="wrapper">
 
@@ -15,42 +56,23 @@
                 <div id="circle-body" class="left-align">
                 <?php echo $this->Form->create('User'); ?>
                 <?php
-                    echo $this->Form->input('first_name', array('label'=>false,'placeholder'=>"First Name"));
-                    echo $this->Form->input('last_name', array('label'=>false,'placeholder'=>"Last Name"));
-                    echo $this->Form->input('email', array('label'=>false,'placeholder'=>"Email"));
+                    echo $this->Form->input('first_name', array('id'=>'first_name','label'=>false,'placeholder'=>"First Name"));
+                    echo $this->Form->input('last_name', array('id'=>'last_name','label'=>false,'placeholder'=>"Last Name"));
+                    echo $this->Form->input('email', array('id'=>'email_id','label'=>false,'placeholder'=>"Email"));
                     ?>
 
-
+                    <div id="type_radio">
                      <?php
-                    echo $this->Form->input('type', array('type' => 'radio', 'options' => array('Entrepreneur', 'Investor')));
-                    echo $this->Form->input('password', array('label'=>false,'placeholder'=>"Password"));
-                    echo $this->Form->input('confirm_password', array('type' => 'password','label'=>false,'placeholder'=>"Confirm Password"));
+                    echo $this->Form->input('type', array('id'=>'type','class'=>'type_class','type' => 'radio', 'options' => array('Entrepreneur', 'Investor')));
+                    ?>
+                    </div>
+                    <?php
+                    echo $this->Form->input('password', array('id'=>'password','label'=>false,'placeholder'=>"Password"));
+                    echo $this->Form->input('confirm_password', array('id'=>'confirm_password','type' => 'password','label'=>false,'placeholder'=>"Confirm Password"));
                     ?>
 
                 <?php echo $this->Form->end(__('Submit'))?>
 
-<!--                    <form method="post" action="">-->
-<!--                        <input type="text" name="fname" value="First Name" />-->
-<!--                        <input type="text" name="lname" value="Last Name" />-->
-<!--                        <br class="clear">-->
-<!--                        <div style="width: 50%; text-align: center; float: left;">-->
-<!--                            Entrepreneur<br>-->
-<!--                            <input type="radio" name="entrepreneur" value="">-->
-<!--                        </div>-->
-<!--                        <div style="width: 50%; text-align: center; float: left;">-->
-<!--                            Investor<br>-->
-<!--                            <input type="radio" name="investor" value="" vertical-align="middle">-->
-<!--                        </div>-->
-<!---->
-<!--                        <br>-->
-<!--                        <input type="email" name="email" value="email" />-->
-<!--                        <br>-->
-<!--                        <input type="password" name="password" value="password" />-->
-<!--                        <br>-->
-<!--                        <input type="password" name="password" value="password" />-->
-<!--                    </form>-->
-
-                    <!-- End circle body below-->
                 </div>
                 <!-- End circle below -->
             </div>
@@ -63,22 +85,3 @@
 
 
 
-
-<!--<div class="row">-->
-<!--    --><?php //echo $this->Html->link('FB Login', array('action' => 'facebook_login'))?>
-<!--    --><?php //echo $this->Form->create('User'); ?>
-<!--       --><?php
-//        echo $this->Form->input('first_name', array());
-//        echo $this->Form->input('last_name', array());
-//        echo $this->Form->input('email', array());
-//        echo $this->Form->input('type', array('type' => 'radio', 'options' => array('Entrepreneur', 'Investor')));
-//        echo $this->Form->input('password', array());
-//        echo $this->Form->input('confirm_password', array('type' => 'password'));
-//        ?>
-<!---->
-<!--    --><?php //echo $this->Form->end(__('Submit'));
-//
-//    //echo $this->Html->link('Register Here', array('action' => 'register'));
-//
-//    ?>
-<!--</div>-->

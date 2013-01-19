@@ -1,23 +1,22 @@
-<!--						<div id="overlay">
-                            <div style="position: relative; margin: 0 auto; width: 840px;">
-                                <div class="small-circle red left-top"><h2>Share</h2></div>
-                                <div class="small-circle yellow left-bottom"><h2>Financials</h2></div>
-                                <div class="small-circle green right-bottom"><h2>News</h2></div>
-                                <div class="small-circle blue right-top"><h2>Watchlist</h2></div>
-                                <div class="clear"></div>
-                            <a href='#' onclick='overlay()'><h3>Close</h3></a>
-                            </div>
-                        </div>-->
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#email").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter Email</div>"
+        });
+        jQuery("#email").validate({
+            expression:"if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
+            message:"<div>Enter valid email id</div>"
+        });
+
+        jQuery("#password").validate({
+            expression:"if (VAL) return true; else return false;",
+            message:"<div>Enter password</div>"
+        });
 
 
-<!--  Sample searchbar for active jquery states
-
-<form>
-    <input name="status" id="status" value="Type something here" type="text"/>
-    <input value="Submit" type="submit"/>
-</form>
- -->
-
+    });
+</script>
 
 
 <div id="content">
@@ -30,11 +29,11 @@
                 <div class="title">
                     <h2>Login</h2>
                 </div>
-               <div id="circle-body" class="left-align">
+                <div id="circle-body" class="left-align">
                     <?php echo $this->Form->create('User'); ?>
-                   <?php
-                    echo $this->Form->input('email', array('id' => 'email','label'=>false));
-                    echo $this->Form->input('password', array('id' => 'password','label'=>false));
+                    <?php
+                    echo $this->Form->input('email', array('id' => 'email', 'label' => false));
+                    echo $this->Form->input('password', array('id' => 'password', 'label' => false));
                     ?>
                     <?php echo $this->Form->end(__('Submit'));
 //                    echo $this->Html->link('Forgot password', array('action' => 'forgot_password'));
