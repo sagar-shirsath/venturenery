@@ -270,7 +270,7 @@ class CompaniesController extends AppController
         if (!empty($query['search'])) {
             $query = $query['search'];
             $this->paginate = array(
-                'conditions' => array('Employee.logo_url !=' => "", 'OR' => array('Employee.name LIKE' => '%' . $query . '%')),
+                'conditions' => array('Employee.photo_url !=' => "", 'OR' => array('Employee.name LIKE' => '%' . $query . '%')),
                 'limit' => 20
             );
             $employees = $this->paginate('Employee');

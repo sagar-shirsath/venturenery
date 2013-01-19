@@ -68,9 +68,9 @@
                 <td><?php echo h($employee['Employee']['created']); ?>&nbsp;</td>
                 <td><?php echo h($employee['Employee']['modified']); ?>&nbsp;</td>
                 <td class="actions">
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $employee['Employee']['id'])); ?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $employee['Employee']['id'])); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $employee['Employee']['id']), null, __('Are you sure you want to delete # %s?', $employee['Employee']['id'])); ?>
+                    <?php echo $this->Html->link(__('View'), array('controller'=>'employees','action' => 'view', $employee['Employee']['id'])); ?>
+                    <?php echo $this->Html->link(__('Edit'), array('controller'=>'employees','action' => 'edit', $employee['Employee']['id'])); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('controller'=>'employees','action' => 'delete', $employee['Employee']['id']), null, __('Are you sure you want to delete # %s?', $employee['Employee']['id'])); ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -84,3 +84,5 @@
         <li><?php echo $this->Html->link(__('more...'), array('action' => 'get_all_searched_employees','?'=>array('search'=>$search_query))); ?></li>
     </ul>
 </div>
+
+<div style="padding-bottom: 100px;"></div>
