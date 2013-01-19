@@ -34,7 +34,6 @@ class CompaniesController extends AppController
         $user = $this->Company->Watchlist->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')), 'recursive' => 2));
         $watchLists = $user['Watchlist'];
         $companyIds = $this->getCompanyIds($watchLists);
-
         $this->paginate = array(
             'conditions' => array('Company.logo_url !=' => ""),
             'fields' => array('Company.id', 'Company.name', 'logo_url', 'created', 'modified'),
@@ -51,7 +50,7 @@ class CompaniesController extends AppController
     {
         $companyIds = array();
         foreach ($watchLists as $watchList) {
-            $companyIds[$watchList['company_id']] = $watchList['company_id'];
+            $companyIds[$watchList['company_id']] = array('watchListId'=>$watchList['id']);
         }
         return $companyIds;
     }
@@ -309,5 +308,10 @@ class CompaniesController extends AppController
         if ($this->Company->Watchlist->save($watch_company)) {
             $this->redirect(array('action' => 'index'));
         }
+    }
+
+    public function remove_from_watch_list($watchListId){
+        $this->Company->Watchlist->delete($watchListId);
+        $this->redirect(array('action' => 'index'));
     }
 }

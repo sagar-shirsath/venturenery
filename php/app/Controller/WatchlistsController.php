@@ -13,8 +13,15 @@ class WatchlistsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Watchlist->recursive = 0;
-		$this->set('watchlists', $this->paginate());
+        $user_id = $this->Auth->user('id');
+//        $watchList = $this->Watchlist->find('all',array('conditions'=>array('Watchlist.user_id'=>$user_id)));
+        $this->paginate = array(
+            'conditions' => array('Watchlist.user_id'=> $user_id),
+            'order'=>'Watchlist.created Desc',
+            'limit' => 20
+        );
+        $watchList = $this->paginate('Watchlist');
+        $this->set('companies', $watchList);
 	}
 
 /**
