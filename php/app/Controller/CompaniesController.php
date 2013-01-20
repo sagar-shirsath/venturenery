@@ -159,7 +159,7 @@ class CompaniesController extends AppController
         foreach ($allCompanies as $company) { //api_key=tp5vhpdhzv6w48w4q7b7cscr
 
             $fetched_data = $this->get_one_company_data($company);
-            if (!empty($fetched_data->image->available_sizes[0][1])) {
+            if (!empty($fetched_data->image->available_sizes[0][1]) && $fetched_data->homepage_url != ""  && $fetched_data->image->available_sizes[0][1] ="") {
                 $company['Company']['slug'] = $fetched_data->permalink;
                 $company['Company']['description'] = $fetched_data->description;
                 $company['Company']['description'] = $fetched_data->description;
