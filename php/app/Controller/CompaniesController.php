@@ -196,14 +196,16 @@ class CompaniesController extends AppController
 
                     }
                 }
+
                 $this->Company->Employee->saveAll($employeeData);
+                echo "Data saved";
             }else{
                $this->Company->delete($company['Company']['id']);
             }
             //
             //            $this->Company->Employee->create();
             //            $employee['Employee']['data_fetch_url']="api.crunchbase.com/v/1/person/"
-            echo "Data saved";
+
 
         }
 
