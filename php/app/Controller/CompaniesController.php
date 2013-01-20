@@ -219,7 +219,7 @@ class CompaniesController extends AppController
         if (!empty($company['Company']['data_fetch_url'])) {
             return $this->Curl->curl_get($company['Company']['data_fetch_url'] . "?api_key=" . $this->crunchBaseKey);
         } else {
-         
+
             return false;
         }
     }
