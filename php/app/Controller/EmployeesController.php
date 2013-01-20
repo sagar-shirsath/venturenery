@@ -14,8 +14,15 @@ class EmployeesController extends AppController {
  */
 	public function index() {
 		$this->Employee->recursive = 0;
-        $employees = $this->Employee->getAllEmployees();
-        $employees = $this->paginate();
+//        $employees = $this->Employee->getAllEmployees();
+        $this->paginate = array(
+            'conditions' => array('Employee.photo_url !=' => ""),
+            'fields' => array('id', 'name', 'photo_url','Employee.created','Employee.modified','Company.name','Company.id'),
+
+            'limit' => 20
+        );
+        $employees = $this->paginate('Employee');
+
 		$this->set('employees', $employees);
 	}
 
@@ -102,4 +109,12 @@ class EmployeesController extends AppController {
 		$this->Session->setFlash(__('Employee was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+    public function company_employees($company_id){
+        $this->Employee->recursive = 0;
+        $employees = $this->Employee->getCompanyEmployees($company_id);
+        $employees = $this->paginate();
+        $this->set('employees', $employees);
+        $this->render('index');
+    }
 }

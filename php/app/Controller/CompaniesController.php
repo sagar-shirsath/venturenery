@@ -195,7 +195,7 @@ class CompaniesController extends AppController
                 }
                 $this->Company->Employee->saveAll($employeeData);
             }else{
-                $this->Company->delete($company['Company']['id']);
+               $this->Company->delete($company['Company']['id']);
             }
             //
             //            $this->Company->Employee->create();

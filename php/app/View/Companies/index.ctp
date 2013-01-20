@@ -23,6 +23,7 @@
         <td><?php echo h($company['Company']['created']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['modified']); ?>&nbsp;</td>
 		<td class="actions">
+			<?php echo $this->Html->link(__('View Employees'), array('controller'=>'employees','action' => 'company_employees', $company['Company']['id'])); ?>
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $company['Company']['id'])); ?>
            <?php  if (empty($companyIds[$company['Company']['id']])) {

@@ -28,14 +28,14 @@
             message:"<div>Enter Last Name</div>"
         });
 
-        jQuery(".type_class").validate({
-            expression:"if ()) return true; else return false;",
-            message:"<div>Please select type</div>"
-        });
+//        jQuery(".type_class").validate({
+//            expression:"if ()) return true; else return false;",
+//            message:"<div>Please select type</div>"
+//        });
 
-        function radioCheck(id){
-            alert(id);
-        }
+//        function radioCheck(id){
+//            alert(id);
+//        }
 
 
     });

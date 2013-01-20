@@ -49,11 +49,17 @@
 <div id="container">
     <div id="header">
         <div class="wrapper">
-            <a href="/users/dashboard">
-                <div id="logo">
-                </div>
-            </a>
-
+<!--            <a href="/users/dashboard">-->
+<!--                <div id="logo">-->
+<!--                </div>-->
+<!--            </a>-->
+            <?php
+            echo $this->Html->link(
+                '',
+                array('controller'=>'users','action'=>'dashboard'),
+                array('id'=>'logo')
+            )
+            ?>
 
             <!-- 		Searchbar -->
             <div class="search-wrapper">
