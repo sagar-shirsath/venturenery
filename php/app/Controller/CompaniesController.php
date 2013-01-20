@@ -140,6 +140,8 @@ class CompaniesController extends AppController
         $this->redirect(array('action' => 'index'));
     }
 
+
+    //getting all crunchbase companies and saving them into database
     public function get_companies_from_crunchbase()
     {
         $this->layout = false;
@@ -149,6 +151,7 @@ class CompaniesController extends AppController
 
     }
 
+    //fetching data for each company
 
     public function fetch_company_data()
     {

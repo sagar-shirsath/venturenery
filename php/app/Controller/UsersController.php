@@ -93,7 +93,8 @@ class UsersController extends AppController
 
                 $is_exists = $this->User->check_exists($this->request->data);
 
-                if (!$is_exists) {
+                if (!$is_exists ) {
+                    if(empty($this->request->data['User']['type'])){
                     $this->request->data['User']['username'] = $this->request->data['User']['email'];
                     if ($this->User->save($this->request->data)) {
                         $id = $this->User->id;
@@ -101,6 +102,9 @@ class UsersController extends AppController
                         $this->Auth->login($this->request->data['User']);
                         $this->redirect(array('controller' => 'companies'));
 
+                    }
+                    }else{
+                        $this->Session->setFlash(__('Please select type'));
                     }
                 } else {
                     $this->Session->setFlash(__('User already exists ! , please try with another email id'));
