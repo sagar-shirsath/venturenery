@@ -5,8 +5,8 @@
             <th><?php echo $this->Paginator->sort('name','Comapny Name'); ?></th>
             <th><?php echo $this->Paginator->sort('logo_url','company Logo'); ?></th>
 
-            <th><?php echo $this->Paginator->sort('created'); ?></th>
-            <th><?php echo $this->Paginator->sort('modified'); ?></th>
+<!--            <th>--><?php //echo $this->Paginator->sort('created'); ?><!--</th>-->
+<!--            <th>--><?php //echo $this->Paginator->sort('modified'); ?><!--</th>-->
             <th class="actions"><?php echo __('Actions'); ?></th>
         </tr>
         <?php
@@ -20,11 +20,11 @@
                             'url' => array('action' => 'view', $company['Company']['id'])
                         )); ?>&nbsp;
                 </td>
-                <td><?php echo h($company['Company']['created']); ?>&nbsp;</td>
-                <td><?php echo h($company['Company']['modified']); ?>&nbsp;</td>
+<!--                <td>--><?php //echo h($company['Company']['created']); ?><!--&nbsp;</td>-->
+<!--                <td>--><?php //echo h($company['Company']['modified']); ?><!--&nbsp;</td>-->
                 <td class="actions">
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $company['Company']['id'])); ?>
+                    <?php echo $this->Html->link(__('View'), array('controller'=>'companies','action' => 'view', $company['Company']['id'])); ?>
+<!--                    --><?php //echo $this->Html->link(__('Edit'), array('controller'=>'companies','action' => 'edit', $company['Company']['id'])); ?>
 <!--                    --><?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?>
                 </td>
             </tr>
@@ -44,9 +44,4 @@
         ?>
     </div>
 </div>
-<div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-        <li><?php echo $this->Html->link(__('New Company'), array('action' => 'add')); ?></li>
-    </ul>
-</div>
+
